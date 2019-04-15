@@ -1,26 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
+import Loading from './session/components/Loading';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+const MasterContainer = lazy(() => import('./layout/MasterContainer'));
+const ErrorScreen = lazy(() => import('./session/components/ErrorScreen'));
+
+const App = () => (
+  <BrowserRouter>
+    <Suspense fallback={<Loading/>}>
+      <Switch>
+        <Route exact path="/" component={MasterContainer}/>
+        <Route path="*" component={ErrorScreen}/>
+      </Switch>
+    </Suspense>
+  </BrowserRouter>
+);
 
 export default App;
