@@ -4,7 +4,8 @@
 
 # CSV format
 
-It is assumed that the csv follows the format:  
+It is assumed that the csv follows the format:
+
 | first_name| last_name | gender (F or M) |email address | phone number |
 | ------------- |-------------| -----| ---- | ---- |
 | Charles | De Gaul | M | charly@gaul.fr| +123|
