@@ -1,3 +1,18 @@
+# How to run the script
+
+Run the commands:
+
+```
+    yarn install
+    yarn start
+```
+
+# Tests
+
+```
+    yarn test
+```
+
 # Potential problems not addressed:
 
 - Client has to download the entire Material-UI library. For a less bandwidth, follow https://material-ui.com/getting-started/installation/.
@@ -6,7 +21,7 @@
 
 It is assumed that the csv follows the format:
 
-| first_name| last_name | gender (F or M) |email address | phone number |
-| ------------- |-------------| -----| ---- | ---- |
-| Charles | De Gaul | M | charly@gaul.fr| +123|
-| Anna | Hathaway | F | annie@hathaway.com | +4133|
+| first_name | last_name | gender (F or M) | email address      | phone number |
+| ---------- | --------- | --------------- | ------------------ | ------------ |
+| Charles    | De Gaul   | M               | charly@gaul.fr     | +123         |
+| Anna       | Hathaway  | F               | annie@hathaway.com | +4133        |
