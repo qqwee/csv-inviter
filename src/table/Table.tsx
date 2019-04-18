@@ -7,60 +7,39 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import styles from './Table.module.css';
 import Row from './components/Row';
+import { connect } from 'react-redux';
 
 interface IProps {
-
+  invitee: Invitee[];
 }
 
-let id = 0;
+const mapStateToProps = (state: any) => ({
+  invitee: state,
+});
 
-const createData =
-(
-    firstName?: string,
-    lastName?: string,
-    gender?: string,
-    emailAddress?: string,
-    phoneNumber?: string
-): Intivee => {
-    id += 1;
-    return {
-        id,
-        firstName,
-        lastName,
-        gender,
-        emailAddress,
-        phoneNumber
-    };
-}
+const SimpleTable = (props: IProps) => {
+  const { invitee } = props;
+  return (
+    <Paper className={styles.root}>
+      <Table className={styles.table}>
+        <TableHead>
+          <TableRow className={styles.head}>
+            <TableCell className={styles.tableCell}>First Name</TableCell>
+            <TableCell className={styles.tableCell}>Last Name</TableCell>
+            <TableCell className={styles.tableCell}>Gender</TableCell>
+            <TableCell className={styles.tableCell}>Email Address</TableCell>
+            <TableCell className={styles.tableCell}>Phone Number</TableCell>
+            <TableCell className={styles.tableCell} />
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {invitee.map(i => (
+            <Row key={i.id} invitee={i} />
+          ))}
+        </TableBody>
+      </Table>
+    </Paper>
+  );
+};
 
-let rows: Intivee[] = [];
-
-for (let i = 0; i < 10; i++) {
-    rows.push(createData('Felix', 'Gast', 'M', 'fgdorian@gmail.com'));
-}
-
-function SimpleTable(props: IProps) {
-
-    return (
-        <Paper className={styles.root}>
-        <Table className={styles.table}>
-            <TableHead>
-                <TableRow className={styles.head}>
-                    <TableCell className={styles.tableCell}>First Name</TableCell>
-                    <TableCell className={styles.tableCell}>Last Name</TableCell>
-                    <TableCell className={styles.tableCell}>Gender</TableCell>
-                    <TableCell className={styles.tableCell}>Email Address</TableCell>
-                    <TableCell className={styles.tableCell}>Phone Number</TableCell>
-                </TableRow>
-            </TableHead>
-            <TableBody>
-            {rows.map(row => (
-                <Row key={row.id} invitee={row}/>
-            ))}
-            </TableBody>
-        </Table>
-        </Paper>
-    );
-}
-  
-export default SimpleTable;
+export default connect(mapStateToProps)(SimpleTable);

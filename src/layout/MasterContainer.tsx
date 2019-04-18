@@ -1,42 +1,44 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Table from '../table/Table';
 import styles from './MasterContainer.module.css';
-import SearchBar from '../search/SearchBar';
-import Fade from '@material-ui/core/Fade';
+import TopBar from '../topbar/TopBar';
 import Uploader from '../uploader/Uploader';
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
+import { addInvitee, updateInvitee } from '../session/session.actions';
 
 interface IProps {
-
+  invitee: Invitee[];
 }
 
-interface IState {
-    invitees: Intivee[];
-}
+const mapStateToProps = (state: any) => ({
+  invitee: state,
+});
 
-class MasterContainer extends Component<IProps, IState> {
-    constructor(props: IProps) {
-        super(props);
-        this.state = {
-            invitees: [],
-        }
-    }
-    public render() {
-        const isListEmpty = this.state.invitees.length === 0;
-        return (
-            <div>
-            <div className={styles.head}>
-                <Fade in={false}>
-                    <SearchBar className={styles.searchBar}></SearchBar>
-                </Fade>
-            </div>
-            <div className={styles.root}>
-                {
-                    isListEmpty ? <Uploader/> : <Table/>
-                }
-            </div>
-            </div>
-        );
-    }
-}
+const mapDispatchToProps = (dispatch: Dispatch) =>
+  bindActionCreators(
+    {
+      addInvitee,
+      updateInvitee,
+    },
+    dispatch
+  );
 
-export default MasterContainer;
+const MasterContainer = (props: IProps) => {
+  const isListEmpty = props.invitee.length === 0;
+  return (
+    <div>
+      <div className={styles.head}>
+        <TopBar disabled={isListEmpty} className={styles.searchBar} />
+      </div>
+      <div className={styles.root}>
+        {isListEmpty ? <Uploader /> : <Table />}
+      </div>
+    </div>
+  );
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MasterContainer);

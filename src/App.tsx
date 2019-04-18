@@ -8,10 +8,10 @@ const ErrorScreen = lazy(() => import('./session/components/ErrorScreen'));
 
 const App = () => (
   <BrowserRouter>
-    <Suspense fallback={<Loading/>}>
+    <Suspense fallback={<Loading />}>
       <Switch>
-        <Route exact path="/" component={MasterContainer}/>
-        <Route path="*" component={ErrorScreen}/>
+        <Route exact path="/" component={MasterContainer} />
+        <Route path="*" component={ErrorScreen} />
       </Switch>
     </Suspense>
   </BrowserRouter>

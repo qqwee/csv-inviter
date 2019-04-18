@@ -1,22 +1,22 @@
 .root {
-    height: 85vh;
-    display: flex;
-    flex-direction: row;
-    vertical-align: middle;
+  height: 85vh;
+  display: flex;
+  flex-direction: row;
+  vertical-align: middle;
 }
 
 .head {
-    height: 15vh;
-    display: flex;
-    align-items: center;
-    width: 800;
-    background-color: rgba(27, 73, 89, 0.769);
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  width: 800;
+  background-color: rgba(27, 73, 89, 0.769);
 }
 
 .searchBar {
-    width: 80vw;
-    margin: auto auto 5px auto;
-    display: flex;
-    border-radius: 0%;
-    box-shadow: 4px;
+  width: 80vw;
+  margin: auto auto 5px auto;
+  display: flex;
+  border-radius: 0%;
+  box-shadow: 4px;
 }
