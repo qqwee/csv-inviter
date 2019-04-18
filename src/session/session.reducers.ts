@@ -7,9 +7,6 @@ export default (state: any = initialState, action: ISessionAction) => {
     case actions.ADD_INVITEE:
       return [...action.payload, ...state];
     case actions.REMOVE_INVITEE:
-      console.log('REMOVE_INVITEE');
-      console.log(action.payload.id);
-      console.log(state.filter((e: Invitee) => e.id !== action.payload.id));
       return state.filter((e: Invitee) => e.id !== action.payload.id);
     case actions.UPDATE_INVITEE:
       return state.map((e: Invitee) =>
