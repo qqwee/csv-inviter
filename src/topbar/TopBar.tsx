@@ -31,13 +31,7 @@ const TopBar = (props: IProps) => {
         variant="outlined"
         color="default"
         className={styles.buttonLeft}
-        onClick={() =>
-          props.addInvitee([
-            {
-              id: uuidv4(),
-            },
-          ])
-        }
+        onClick={() => props.addInvitee([{ id: uuidv4() }])}
       >
         Add new employee
         <Icon className={styles.icon}>add</Icon>
@@ -47,7 +41,11 @@ const TopBar = (props: IProps) => {
         variant="outlined"
         color="default"
         className={styles.buttonRight}
-        onClick={() => console.log('clicked')}
+        onClick={() =>
+          console.log(
+            'Here we can do a POST request with axios or fetch, passing the list of invitees'
+          )
+        }
       >
         Send out invitations
         <Icon className={styles.icon}>send</Icon>
